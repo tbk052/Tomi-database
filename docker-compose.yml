@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  # MySQL
+  database:
+    container_name: tomi-database
+    image: mysql:8
+    command: --default-authentication-plugin=caching_sha2_password
+    restart: always
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=12345678
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=tomi_database
+    ports:
+      - 3306:3306
+    volumes:
+      - tomi-volume:/var/lib/mysql
+    networks:
+      - tomi-network
+
+networks:
+  tomi-network:
+    driver: bridge
+
+volumes:
+  tomi-volume:
