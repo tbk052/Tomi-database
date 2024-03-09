@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { User } from './typeorm/entities/user.entity';
 import { UsersModule } from './users/users.module';
 import { Profile } from './typeorm/entities/profile.entity';
+import { Post } from './typeorm/entities/post.entity';
 
 @Module({
   imports: [
@@ -16,9 +17,9 @@ import { Profile } from './typeorm/entities/profile.entity';
       username: 'admin',
       password: '12345678',
       database: 'tomi_database',
-      entities: [User, Profile],
+      entities: [User, Profile, Post],
       synchronize: true,
-      logging: true,
+      // logging: true,
     }),
     UsersModule,
   ],
