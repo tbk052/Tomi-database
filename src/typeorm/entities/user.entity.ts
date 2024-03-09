@@ -2,11 +2,13 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { DateEntity } from '../common/date.entity';
 import { Profile } from './profile.entity';
+import { Post } from './post.entity';
 
 @Entity({ name: 'user' })
 export class User extends DateEntity {
@@ -25,4 +27,7 @@ export class User extends DateEntity {
   @OneToOne(() => Profile, (profile) => profile.user)
   @JoinColumn()
   profile: Profile;
+
+  @OneToMany(() => Post, (post) => post.user)
+  posts: Post[];
 }
